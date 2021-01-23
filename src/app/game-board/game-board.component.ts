@@ -25,4 +25,12 @@ export class GameBoardComponent implements OnInit {
     return this.board;
   }
 
+  public makeMove(event: any) {
+    console.log('Hello');
+  }
+
+  public resetGame() {
+    this.board = [];
+  }
+
 }
