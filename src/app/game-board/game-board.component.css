@@ -1,0 +1,9 @@
+.board {
+display: grid;
+grid-template-columns: repeat(3, auto);
+width: 20%;
+flex: 0 0 100%;
+justify-content: center;
+margin: auto;
+margin-top: 10%;
+}
