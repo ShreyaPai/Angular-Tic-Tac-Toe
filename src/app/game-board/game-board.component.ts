@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-board.component.css']
 })
 export class GameBoardComponent implements OnInit {
-  public board = [];
+  public board: any[];
   public boardSize = 9;
   public player = 'O';
   public stepCount = 1;
@@ -19,6 +19,7 @@ export class GameBoardComponent implements OnInit {
   }
 
   public createGameBoard() {
+    this.board = [];
     for (let index = 0; index < this.boardSize; index++) {
       this.board.push( {
         index: index,
@@ -68,7 +69,10 @@ export class GameBoardComponent implements OnInit {
   }
 
   public resetGame() {
-    this.board = [];
+    this.stepCount = 1;
+    this.gameOver = false;
+    this.winner = '';
+    this.createGameBoard();
   }
 
 }
