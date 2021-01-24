@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class GameBoardComponent implements OnInit {
   public board: any[];
   public boardSize = 9;
-  public player = 'O';
+  public player = 'X';
   public stepCount = 1;
   public gameOver: boolean;
   public winner: string = '';

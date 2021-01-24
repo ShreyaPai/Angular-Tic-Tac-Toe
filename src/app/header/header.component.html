@@ -1,4 +1,6 @@
 <div class="header">
   <h1>Tic-Tac-Toe</h1>
   <button type="button" class="btn btn-outline-secondary" (click) = resetGame()>Reset</button>
+  <h2 *ngIf="winner && winner!==''">'{{winner}}' wins!</h2>
+  <h2 *ngIf="winner==='' && gameOver">It's a draw, play again!</h2>
 </div>
