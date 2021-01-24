@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class GameBoardComponent implements OnInit {
   public board = [];
   public boardSize = 9;
-  public player = 'X';
-  public computer = 'O';
-
+  public player = 'O';
+  public stepCount = 1;
+  gameOver: boolean
   constructor() { }
 
   ngOnInit(): void {
@@ -18,7 +18,7 @@ export class GameBoardComponent implements OnInit {
   }
 
   public createGameBoard() {
-    for (let index = 1; index <= this.boardSize; index++) {
+    for (let index = 0; index < this.boardSize; index++) {
       this.board.push( {
         index: index,
         state: null
@@ -29,21 +29,20 @@ export class GameBoardComponent implements OnInit {
 
   public makePlayerMove(squareClicked) {
     this.updateBoard(squareClicked)
-    console.log(squareClicked);
-    this.player = this.player;
-    squareClicked.state = this.player;
-    if (this.player) {
-      this.makeComputerMove(this.board);
+    if(squareClicked.state === null) {
+      this.player = this.player === 'X' ? 'O' : 'X';
+      squareClicked.state = this.player;
+      console.log(squareClicked);
+      this.stepCount ++;
     }
-  }
-
-  public makeComputerMove(board: any[]) {
-    console.log(board);
   }
 
   updateBoard(squareClicked) {
     this.board[squareClicked.index].state = squareClicked.state;
-    console.log(squareClicked.state);
+  }
+
+  public checkIfGameOver() {
+    return this.stepCount >= 9 ? true : false;
   }
 
   public getWinner() {
