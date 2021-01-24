@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class GameBoardComponent implements OnInit {
   public board = [];
   public boardSize = 9;
+  public player = 'X';
+  public computer = 'O';
 
   constructor() { }
 
@@ -25,8 +27,27 @@ export class GameBoardComponent implements OnInit {
     return this.board;
   }
 
-  public makeMove(event: any) {
-    console.log('Hello');
+  public makePlayerMove(squareClicked) {
+    this.updateBoard(squareClicked)
+    console.log(squareClicked);
+    this.player = this.player;
+    squareClicked.state = this.player;
+    if (this.player) {
+      this.makeComputerMove(this.board);
+    }
+  }
+
+  public makeComputerMove(board: any[]) {
+    console.log(board);
+  }
+
+  updateBoard(squareClicked) {
+    this.board[squareClicked.index].state = squareClicked.state;
+    console.log(squareClicked.state);
+  }
+
+  public getWinner() {
+
   }
 
   public resetGame() {
